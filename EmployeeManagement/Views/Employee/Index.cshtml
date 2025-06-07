@@ -6,11 +6,12 @@
     <button type="submit">Search</button>
     </form>
 
-<a href="/Employee/Create">Add New Employee</a>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add New Employee</a>
+</p>
 
-
-<table class="table">
-    <thead>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -27,10 +28,10 @@
                 <td>@emp.Position</td>
                 <td>@emp.Remark</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@emp.Id">Edit</a> |
+                    <a class=" btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@emp.Id">Edit</a> |
                     <form asp-action="Delete" method="post" style="display:inline;">
                         <input type="hidden" name="id" value="@emp.Id" />
-                        <button type="submit" onclick="return confirm('Confirm delete?')">Delete</button>
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Confirm delete?')">Delete</button>
                     </form>
                 </td>
 
