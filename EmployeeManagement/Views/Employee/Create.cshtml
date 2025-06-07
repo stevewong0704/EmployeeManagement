@@ -1,0 +1,32 @@
+﻿@model EmployeeManagement.Models.Employee
+@Html.ValidationMessageFor(model => model.Name)
+@Html.ValidationSummary(true)
+@Html.ValidationMessageFor(model => model.Position)
+@Html.ValidationMessageFor(model => model.Remark)
+
+
+
+<h2>Create New Employee</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Name:</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label>Position:</label>
+        <input asp-for="Position" />
+    </div>
+    <div>
+        <label>Remark:</label>
+        <input asp-for="Remark" />
+    </div>
+    <button type="submit">Add Employee</button>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

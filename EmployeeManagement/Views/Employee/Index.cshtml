@@ -1,0 +1,52 @@
+﻿@model List<EmployeeManagement.Models.Employee>
+
+<h2>Employee List</h2>
+<form method="get" asp-action="index" asp-controller="Employee">
+    <input type="text" name="keyword" placeholder="Search by Name or Position" />
+    <button type="submit">Search</button>
+    </form>
+
+<a href="/Employee/Create">Add New Employee</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Remark</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Position</td>
+                <td>@emp.Remark</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@emp.Id">Edit</a> |
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@emp.Id" />
+                        <button type="submit" onclick="return confirm('Confirm delete?')">Delete</button>
+                    </form>
+                </td>
+
+
+
+            </tr>
+            
+
+        }
+    </tbody>
+</table>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
